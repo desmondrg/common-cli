@@ -1,30 +1,34 @@
 {
   "name": "@urbanshona/common-cli",
-  "version": "0.0.1",
+  "version": "0.0.8",
   "author": {
     "name": "Desmond Rgwaringesu",
     "email": "desmondrg@gmail.com"
   },
+  "types": "./types/index.d.ts",
+  "main": "./index.js",
+  "repository": "https://github.com/urbanshona/common-cli.git",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "license": "MIT",
   "public": true,
-  "description": "A Very Simple Library Containing Handy tools for building File Generation NodeJS CLIs",
+  "description": "A very simple library containing handy tools for building File Generation NodeJS CLIs",
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "dev": "ts-node  -r tsconfig-paths/register index.ts -s src/server/entities -o src/browser/entities",
     "build": "ts-node prebuild.ts && tsc --project tsconfig.json",
     "publish:local": "cd ./dist && npm link --force",
-    "publish:global": "yarn run publish:local && cd ./dist && npm publish",
-    "build-n-publish:local": "yarn run build && yarn run publish:local",
-    "build-n-publish:local-n-test": "yarn run build-n-publish:local && yarn run test",
+    "publish:global": "npm run publish:local && cd ./dist && npm publish --access public",
+    "build-n-publish:local": "npm run build && npm run publish:local",
+    "build-n-publish:global": "npm run build && npm run publish:global",
+    "build-n-publish:local-n-test": "npm run build-n-publish:local && npm run test",
     "test": "common-cli"
   },
   "keywords": [
     "common cli library"
   ],
-  "types": "./types",
-  "main": "./index.js",
-  "repository": "https://github.com/urbanshona/common-cli.git",
-  "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.1",
     "lodash": "^4.17.21",

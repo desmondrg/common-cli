@@ -1,6 +1,6 @@
 # UrbanShona Common CLI
 
-> A Very Simple Library Containing Handy tools for building File Generation NodeJS CLIs
+> A very simple library containing handy tools for building File Generation NodeJS CLIs
 ## Installation
 
 ```shell

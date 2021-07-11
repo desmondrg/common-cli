@@ -17,9 +17,7 @@ export class FileGenerator
      * @param fileNameType The naming type to use for the emitted files
      * @param options Options for configuring output, typically passed via the command line
      */
-    constructor(sourceFilePathGlob: string,
-                public fileNameType: FileNameType,
-                public options: IFileGeneratorOptions)
+    constructor(public options: IFileGeneratorOptions)
     {
 
         const settings =  FileGeneratorSettings.fromOptions(options);
@@ -37,8 +35,8 @@ export class FileGenerator
             }
         );
 
-        if (sourceFilePathGlob) {
-            this.project.addSourceFilesAtPaths(sourceFilePathGlob);
+        if (options.sourceFilePathGlob) {
+            this.project.addSourceFilesAtPaths(options.sourceFilePathGlob);
         }
 
 
@@ -51,7 +49,11 @@ export class FileGenerator
      */
     toStandardFileNamePrefix(probe: string) {
 
-        switch (this.fileNameType) {
+        switch (this.options.fileNameType)
+        {
+            case FileNameType.leaveAsIs:
+                return probe;
+
             case FileNameType.kebabCase:
                 return _.kebabCase(probe);
 

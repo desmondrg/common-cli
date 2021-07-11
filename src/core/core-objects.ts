@@ -11,7 +11,8 @@ export enum FileNameType
     snakeCase = 's',
     kebabCase = 'k',
     camelCase = 'c',
-    pascalCase = 'p'
+    pascalCase = 'p',
+    leaveAsIs = 'a'
 
 }
 
@@ -22,6 +23,7 @@ export enum FileNameType
  */
 export interface IFileGeneratorOptions
 {
+    sourceFilePathGlob: string;
     /// "two" or "four" or "eight" or "tab"
     indentationText: string;
 
@@ -32,6 +34,8 @@ export interface IFileGeneratorOptions
 
     isToUsePrefixAndSuffixTextForRename: boolean;
     isToUseTrailingCommas: boolean;
+    fileNameType: FileNameType;
+
 }
 
 /**
